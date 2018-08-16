@@ -1,2 +1,2 @@
 # BellBot
-A simple and hopefully easily modifiable IRC bot made using C++.
+An IRC bot which tracks the number of joins/quits a user has within a channel.
