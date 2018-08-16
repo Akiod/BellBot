@@ -91,7 +91,7 @@ void EntranceController::incEntrance(std::string u, char type)
 	else if(type == 1)
 		ptr->quits++;
 
-	std::cout << ptr->name << " " << ptr->joins << " joins " << ptr->quits << " quits. [ List size: " << entranceList.size() << " ]."  << std::endl;
+	std::cout << ptr->name << " " << ptr->joins << " joins " << ptr->quits << " quits. [ List size: " << entranceList.size() << " ]."  << std::endl;;
 	this->saveEntranceFile();
 }
 bool EntranceController::entranceUserExists(std::string user)
