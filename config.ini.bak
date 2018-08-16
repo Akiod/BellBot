@@ -1,0 +1,13 @@
+#Abi's Wonderful IRC BOT v0.01
+
+#Nickname
+nickname = BellBot11
+
+#Realname
+realname = Bell Bot
+
+#Description
+description = Im an IRC bot.
+
+#Channel
+channel = #abibot
