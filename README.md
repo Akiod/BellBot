@@ -1,2 +1,2 @@
 # BellBot
-An IRC bot which tracks the number of joins/quits a user has within a channel.
+An IRC bot which tracks the number of joins/quits a user has within a channel. No dependencies required!
