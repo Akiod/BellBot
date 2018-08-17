@@ -57,15 +57,15 @@ bool ActionProcessor::do_action(std::string data, std::queue<std::string> & pack
 	}
 	else if(command == "QUIT")
 	{
-		entrance_controller->incEntrance(prefix, 1);
+		entrance_controller->incEntrance(prefix, data, 1);
 	}
 	else if(command == "JOIN")
 	{
-		entrance_controller->incEntrance(prefix, 0);
+		entrance_controller->incEntrance(prefix, data, 0);
 	}
 	else if(command == "PART")
 	{
-		entrance_controller->incEntrance(prefix, 1);
+		entrance_controller->incEntrance(prefix, data, 1);
 	}
 	
 	return true;

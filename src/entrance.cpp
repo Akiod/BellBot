@@ -63,6 +63,15 @@ void EntranceController::saveEntranceFile()
 
 	file.close();
 }
+void EntranceController::appendEntranceLog(std::string user, std::string channel, char type)
+{
+	unsigned int epoch_time = (unsigned) time(NULL);
+	std::ofstream file;
+
+	file.open("entrance_log", std::ios_base::app);
+	file << user << " " << epoch_time << " " << (int)type << " " << channel << std::endl;
+	file.close();
+}
 std::string EntranceController::stripName(std::string user)
 {
 	std::string ret = "";
@@ -74,9 +83,11 @@ std::string EntranceController::stripName(std::string user)
 	}
 	return ret;
 }
-void EntranceController::incEntrance(std::string u, char type)
+void EntranceController::incEntrance(std::string u, std::string channel, char type)
 {
 	std::string user = stripName(u);
+	channel = channel.substr(0, channel.size() - 2);
+
 
 	EntranceUser * ptr = NULL;
 
@@ -92,7 +103,9 @@ void EntranceController::incEntrance(std::string u, char type)
 		ptr->quits++;
 
 	std::cout << ptr->name << " " << ptr->joins << " joins " << ptr->quits << " quits. [ List size: " << entranceList.size() << " ]."  << std::endl;
+
 	this->saveEntranceFile();
+	this->appendEntranceLog(ptr->name, channel, type);
 }
 bool EntranceController::entranceUserExists(std::string user)
 {
