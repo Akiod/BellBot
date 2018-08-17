@@ -222,6 +222,8 @@ void Client::run_client()
 
 			
 			if(shut_down) break;
+
+			usleep(1000); // so it doesn't eat up a whole core
 		}
 	}
 }
