@@ -156,7 +156,7 @@ bool Client::send_user_login()
 	std::string & nickname = config_reader->data["nickname"];
 	std::string & realname = config_reader->data["realname"];
 	std::string & description = config_reader->data["description"];
-	std::string & channel = config_reader->data["channel"];
+	std::string & channels = config_reader->data["channel"];
 	
 	std::string user_request = "USER " + realname + " * * :" + description;
 	std::string nick_request = "NICK " + nickname;
@@ -169,7 +169,11 @@ bool Client::send_user_login()
 	if(rs == -1)
 		return false;
 
-	this->real_send("JOIN " + channel);
+
+	std::vector<std::string> channelList = split(",", channels);
+
+	for(int i = 0; i < channelList.size(); i++)
+		this->real_send("JOIN " + channelList[i]);
 
 	return true;
 }

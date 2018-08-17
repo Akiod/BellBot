@@ -88,7 +88,6 @@ void EntranceController::incEntrance(std::string u, std::string channel, char ty
 	std::string user = stripName(u);
 	channel = channel.substr(0, channel.size() - 2);
 
-
 	EntranceUser * ptr = NULL;
 
 	if(!entranceUserExists(user))
