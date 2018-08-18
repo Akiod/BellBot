@@ -3,6 +3,7 @@
 
 #include "text_processor.h"
 #include "entrance.h"
+#include "words.h"
 
 #include <vector>
 #include <queue>
@@ -16,6 +17,7 @@ class ActionProcessor
 {
 	TextProcessor * text_processor;
 	EntranceController * entrance_controller;
+	WordController * word_controller;
 
 	public:
 		ActionProcessor();

@@ -10,11 +10,13 @@ ActionProcessor::ActionProcessor()
 {
 	this->text_processor = new TextProcessor();
 	this->entrance_controller = new EntranceController();
+	this->word_controller = new WordController();
 }
 ActionProcessor::~ActionProcessor()
 {
 	delete this->text_processor;
 	delete this->entrance_controller;
+	delete this->word_controller;
 }
 bool ActionProcessor::do_action(std::string data, std::queue<std::string> & packet_queue)
 {
@@ -48,7 +50,7 @@ bool ActionProcessor::do_action(std::string data, std::queue<std::string> & pack
 		switch(sender[0]) // Checks if sender is from a channel or pm.
 		{
 			case '#': // Message receieved in a channel
-				
+				std::cout << data << std::endl;
 				break;
 			default: //Message receieved in a private message
 				

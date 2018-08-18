@@ -44,10 +44,10 @@ void EntranceController::loadEntranceFile()
 		
 		this->entranceList.push_back(new EntranceUser(tokens[0], stoi(tokens[1]), stoi(tokens[2])));
 		
-		BELLOUTN(tokens[0] + " has been loaded.");
-		
 		tokens.clear();	
 	}
+
+	BELLOUTN(std::to_string(entranceList.size()) + " entries loaded.");
 
 	file.close();
 }
