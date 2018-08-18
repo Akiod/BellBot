@@ -17,13 +17,14 @@ class WordUser
 class WordController
 {
 	std::vector<std::string> targetWords;
-	std::vector<WordUser> wordLogs;
+	std::vector<WordUser*> wordLogs;
 
 	public:
 	WordController();
 	~WordController();
 
 	void detect(std::string msg, std::string user, std::string channel);
+	std::vector<std::string> getDetectedWords(std::string msg);
 };
 
 #endif

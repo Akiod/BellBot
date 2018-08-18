@@ -15,15 +15,14 @@ struct ActionPart
 };
 class ActionProcessor
 {
+	public:
 	TextProcessor * text_processor;
 	EntranceController * entrance_controller;
 	WordController * word_controller;
-
-	public:
-		ActionProcessor();
-		~ActionProcessor();
-
-		bool do_action(std::string data, std::queue<std::string> & packet_queue);
+	
+	ActionProcessor();
+	~ActionProcessor();
+	bool do_action(std::string data, std::queue<std::string> & packet_queue);
 };
 
 #endif

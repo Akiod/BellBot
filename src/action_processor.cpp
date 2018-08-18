@@ -50,7 +50,7 @@ bool ActionProcessor::do_action(std::string data, std::queue<std::string> & pack
 		switch(sender[0]) // Checks if sender is from a channel or pm.
 		{
 			case '#': // Message receieved in a channel
-				std::cout << data << std::endl;
+				word_controller->detect(data, prefix, sender);
 				break;
 			default: //Message receieved in a private message
 				
