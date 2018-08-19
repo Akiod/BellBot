@@ -9,7 +9,9 @@ Client::Client(ConfigReader * c_reader)
 {
 	this->shut_down = false;
 	this->config_reader = c_reader;
+	
 	this->action_processor = new ActionProcessor();
+	this->action_processor->word_controller->loadConfigTargets(config_reader->data["words"]);
 
 	this->buffer_remainder = "";
 	memset(recv_buffer, '\0', BUFFER_SIZE);

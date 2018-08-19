@@ -24,6 +24,8 @@ class WordController
 	~WordController();
 
 	void detect(std::string msg, std::string user, std::string channel);
+	void log(WordUser * wordUser);
+	void loadConfigTargets(std::string config_data);
 	std::vector<std::string> getDetectedWords(std::string msg);
 };
 

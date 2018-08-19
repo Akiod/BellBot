@@ -47,7 +47,7 @@ void EntranceController::loadEntranceFile()
 		tokens.clear();	
 	}
 
-	BELLOUTN(std::to_string(entranceList.size()) + " entries loaded.");
+	BELLOUTN(std::to_string(entranceList.size()) + " entrance entries loaded.");
 
 	file.close();
 }
