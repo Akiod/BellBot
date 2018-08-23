@@ -25,11 +25,12 @@ EntranceController::~EntranceController()
 */
 void EntranceController::loadEntranceFile()
 {
+	EntranceUser * ptr = NULL;
 	std::fstream file;
 	std::string line;
 	std::vector<std::string> tokens;
 
-	file.open("entrance_file", std::fstream::in);
+	file.open("entrance_log", std::fstream::in);
 	
 	while(std::getline(file, line))
 	{
@@ -39,27 +40,25 @@ void EntranceController::loadEntranceFile()
 			continue;
 	
 		tokens = split(" ", line);
-		if(tokens.size() != 3 || !is_number(tokens[1]) || !is_number(tokens[2]))
+		if(tokens.size() != 4 || !is_number(tokens[1]) || !is_number(tokens[2]))
 			continue;
+
+		ptr = findEntrance(tokens[0]);
+		if(ptr == NULL)
+		{
+			ptr = addEntrance(tokens[0]);
+		}
 		
-		this->entranceList.push_back(new EntranceUser(tokens[0], stoi(tokens[1]), stoi(tokens[2])));
-		
+		int type = stoi(tokens[2]);
+		if(type == 0)
+			ptr->joins++;
+		else if(type == 1)
+			ptr->quits++;
+
 		tokens.clear();	
 	}
 
 	BELLOUTN(std::to_string(entranceList.size()) + " entrance entries loaded.");
-
-	file.close();
-}
-void EntranceController::saveEntranceFile()
-{
-	remove( "entrance_list" );
-
-	std::ofstream file; // out file stream
-	file.open("entrance_file");
-	
-	for(int i = 0; i < entranceList.size(); i++)
-		file << entranceList[i]->name << " " << entranceList[i]->joins << " " << entranceList[i]->quits << std::endl;
 
 	file.close();
 }
@@ -103,7 +102,6 @@ void EntranceController::incEntrance(std::string u, std::string channel, char ty
 
 	std::cout << ptr->name << " " << ptr->joins << " joins " << ptr->quits << " quits. [ List size: " << entranceList.size() << " ]."  << std::endl;
 
-	this->saveEntranceFile();
 	this->appendEntranceLog(ptr->name, channel, type);
 }
 bool EntranceController::entranceUserExists(std::string user)

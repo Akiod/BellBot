@@ -21,7 +21,6 @@ class EntranceController
 	~EntranceController();
 	void loadEntranceFile();
 	void appendEntranceLog(std::string user, std::string channel, char type);
-	void saveEntranceFile();
 	bool entranceUserExists(std::string user);
 	void incEntrance(std::string user, std::string channel, char type);
 	EntranceUser * addEntrance(std::string user);
