@@ -52,7 +52,7 @@ void EntranceController::loadEntranceFile()
 		int type = stoi(tokens[2]);
 		if(type == 0)
 			ptr->joins++;
-		else if(type == 1)
+		else
 			ptr->quits++;
 
 		tokens.clear();	
